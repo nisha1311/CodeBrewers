@@ -1,0 +1,129 @@
+﻿
+<script src="~/Scripts/RegisterUser/UserRegistration.js"></script>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+
+
+
+    <title>A Register Form</title>
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+
+
+
+<body>
+
+
+
+
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <div class="title"><center><h1>REGISTER ACCOUNT</h1></center></div>
+                    <form method="POST">
+                        <div class="form-group row">
+                            <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
+                            <div class="col-md-6">
+                                <input type="text" id="user_name" class="form-control" name="user_name" placeholder="Enter your name">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                            <div class="col-md-6">
+                                <input type="text" id="user_email" class="form-control" name="user_email" placeholder="Enter your Email">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="user_name" class="col-md-4 col-form-label text-md-right">Password</label>
+                            <div class="col-md-6">
+                                <input type="password" id="user_password" class="form-control" name="user_password" placeholder="Enter your Password" ">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="user_name" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                            <div class="col-md-6">
+                                <input type="password" id="user_confirm_password" class="form-control" name="user_confirm_password" placeholder="Enter password again">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="phone_number" class="col-md-4 col-form-label text-md-right">Date of Birth</label>
+                            <div class="col-md-6">
+                                <input type="date" id="user_dob" class="form-control" name="user_dob" placeholder="Select your DOB">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="present_address" class="col-md-4 col-form-label text-md-right">Current City</label>
+                            <div class="col-md-6">
+                                <input type="text" id="user_location" class="form-control" name="user_location" placeholder="Enter your Current Location/City">
+                            </div>
+                        </div>
+
+
+
+                        <div class="row row-space">
+
+
+
+                            <div class="p-t-15">
+                                <button id="btnAddData" class="btn btn--radius-2 btn--blue" type="button">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+
+
+</body>
+
+
+
+</html>
+

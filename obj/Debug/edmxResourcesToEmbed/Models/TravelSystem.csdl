@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OTRSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="OTRSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="login_" EntityType="OTRSModel.login_" />
+    <FunctionImport Name="addbooking">
+      <Parameter Name="train_number" Mode="In" Type="String" />
+      <Parameter Name="number_of_seats" Mode="In" Type="Int32" />
+      <Parameter Name="user_name" Mode="In" Type="String" />
+      <Parameter Name="user_phone_number" Mode="In" Type="Int64" />
+      <Parameter Name="user_email" Mode="In" Type="String" />
+      <Parameter Name="total_price" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="addusers">
+      <Parameter Name="user_name" Mode="In" Type="String" />
+      <Parameter Name="user_email" Mode="In" Type="String" />
+      <Parameter Name="user_password" Mode="In" Type="String" />
+      <Parameter Name="user_confirm_password" Mode="In" Type="String" />
+      <Parameter Name="user_dob" Mode="In" Type="DateTime" />
+      <Parameter Name="user_location" Mode="In" Type="String" />
+      <Parameter Name="user_status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="deletebooking">
+      <Parameter Name="user_name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="deletetrains">
+      <Parameter Name="train_number" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="deleteusers">
+      <Parameter Name="user_name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="updatetrain_status">
+      <Parameter Name="train_number" Mode="In" Type="String" />
+      <Parameter Name="train_status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="updateusers">
+      <Parameter Name="user_name" Mode="In" Type="String" />
+      <Parameter Name="user_email" Mode="In" Type="String" />
+      <Parameter Name="user_password" Mode="In" Type="String" />
+      <Parameter Name="user_confirm_password" Mode="In" Type="String" />
+      <Parameter Name="user_dob" Mode="In" Type="DateTime" />
+      <Parameter Name="user_location" Mode="In" Type="String" />
+      <Parameter Name="user_status" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="viewbooking" ReturnType="Collection(OTRSModel.viewbooking_Result)">
+      <Parameter Name="user_name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="viewusers" ReturnType="Collection(OTRSModel.viewusers_Result)" />
+    <FunctionImport Name="AddUser" ReturnType="Collection(OTRSModel.AddUser_Result)" />
+    <FunctionImport Name="AddUserDetail" ReturnType="Collection(OTRSModel.AddUserDetail_Result)" />
+    <FunctionImport Name="authenticateusers" ReturnType="Collection(Int32)">
+      <Parameter Name="user_email" Mode="In" Type="String" />
+      <Parameter Name="user_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="AddTrain" ReturnType="Collection(OTRSModel.AddTrain_Result)" />
+    <FunctionImport Name="addtrains">
+      <Parameter Name="train_number" Mode="In" Type="String" />
+      <Parameter Name="train_name" Mode="In" Type="String" />
+      <Parameter Name="train_status" Mode="In" Type="String" />
+      <Parameter Name="ticket_price" Mode="In" Type="Decimal" />
+      <Parameter Name="total_seats" Mode="In" Type="Int32" />
+      <Parameter Name="seats_available" Mode="In" Type="Int32" />
+      <Parameter Name="boarding_location" Mode="In" Type="String" />
+      <Parameter Name="drop_location" Mode="In" Type="String" />
+      <Parameter Name="boarding_date" Mode="In" Type="DateTime" />
+      <Parameter Name="drop_date" Mode="In" Type="DateTime" />
+      <Parameter Name="boarding_time" Mode="In" Type="Time" />
+      <Parameter Name="drop_time" Mode="In" Type="Time" />
+      <Parameter Name="days_of_running" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="searchtrains" ReturnType="Collection(OTRSModel.searchtrains_Result)">
+      <Parameter Name="boarding_location" Mode="In" Type="String" />
+      <Parameter Name="drop_location" Mode="In" Type="String" />
+      <Parameter Name="boarding_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="GetTrain" ReturnType="Collection(OTRSModel.GetTrain_Result)">
+      <Parameter Name="train_number" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_train" EntityType="OTRSModel.tbl_train" />
+    <EntitySet Name="bookings" EntityType="OTRSModel.booking" />
+    <EntitySet Name="users" EntityType="OTRSModel.user" />
+    <AssociationSet Name="FK__users__booking_i__18EBB532" Association="OTRSModel.FK__users__booking_i__18EBB532">
+      <End Role="booking" EntitySet="bookings" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__train_num__151B244E" Association="OTRSModel.FK__users__train_num__151B244E">
+      <End Role="tbl_train" EntitySet="tbl_train" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <FunctionImport Name="sp_View_Ticket" ReturnType="Collection(OTRSModel.sp_View_Ticket_Result)">
+      <Parameter Name="train_number" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="login_">
+    <Key>
+      <PropertyRef Name="email" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdmin" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="viewbooking_Result">
+    <Property Type="Int32" Name="booking_id" Nullable="false" />
+    <Property Type="String" Name="train_number" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="number_of_seats" Nullable="false" />
+    <Property Type="String" Name="user_name" Nullable="false" MaxLength="50" />
+    <Property Type="Int64" Name="user_phone_number" Nullable="false" />
+    <Property Type="String" Name="user_email" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="total_price" Nullable="false" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="viewusers_Result">
+    <Property Type="Int32" Name="user_id" Nullable="false" />
+    <Property Type="String" Name="user_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="user_email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="user_password" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="user_confirm_password" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="user_dob" Nullable="false" />
+    <Property Type="String" Name="user_location" Nullable="true" MaxLength="10" />
+    <Property Type="Boolean" Name="user_status" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="AddUser_Result">
+    <Property Type="String" Name="train_number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="train_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="train_status" Nullable="false" MaxLength="10" />
+    <Property Type="Decimal" Name="ticket_price" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="total_seats" Nullable="false" />
+    <Property Type="Int32" Name="seats_available" Nullable="false" />
+    <Property Type="String" Name="boarding_location" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="drop_location" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="boarding_date" Nullable="false" />
+    <Property Type="DateTime" Name="drop_date" Nullable="false" />
+    <Property Type="Time" Name="boarding_time" Nullable="false" />
+    <Property Type="Time" Name="drop_time" Nullable="false" />
+    <Property Type="Int32" Name="days_of_running" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="AddUserDetail_Result">
+    <Property Type="Int32" Name="user_id" Nullable="false" />
+    <Property Type="String" Name="user_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="user_email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="user_password" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="user_confirm_password" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="user_dob" Nullable="false" />
+    <Property Type="String" Name="user_location" Nullable="true" MaxLength="10" />
+    <Property Type="Boolean" Name="user_status" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="AddTrain_Result">
+    <Property Type="String" Name="train_number" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="train_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="train_status" Nullable="false" MaxLength="10" />
+    <Property Type="Decimal" Name="ticket_price" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="total_seats" Nullable="false" />
+    <Property Type="Int32" Name="seats_available" Nullable="false" />
+    <Property Type="String" Name="boarding_location" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="drop_location" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Column2" Nullable="true" MaxLength="30" />
+    <Property Type="Time" Name="boarding_time" Nullable="false" />
+    <Property Type="Time" Name="drop_time" Nullable="false" />
+    <Property Type="Int32" Name="days_of_running" Nullable="false" />
+    <Property Type="Int32" Name="train_numberID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="searchtrains_Result">
+    <Property Type="Int32" Name="train_number" Nullable="false" />
+    <Property Type="String" Name="train_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="train_status" Nullable="false" MaxLength="10" />
+    <Property Type="Decimal" Name="ticket_price" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="total_seats" Nullable="false" />
+    <Property Type="Int32" Name="seats_available" Nullable="false" />
+    <Property Type="String" Name="boarding_location" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="drop_location" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="boarding_date" Nullable="false" />
+    <Property Type="DateTime" Name="drop_date" Nullable="false" />
+    <Property Type="Time" Name="boarding_time" Nullable="false" />
+    <Property Type="Time" Name="drop_time" Nullable="false" />
+    <Property Type="Int32" Name="days_of_running" Nullable="false" />
+    <Property Type="Int32" Name="train_numberID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetTrain_Result">
+    <Property Type="Int32" Name="train_number" Nullable="false" />
+    <Property Type="String" Name="train_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="train_status" Nullable="false" MaxLength="10" />
+    <Property Type="Decimal" Name="ticket_price" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="total_seats" Nullable="false" />
+    <Property Type="Int32" Name="seats_available" Nullable="false" />
+    <Property Type="String" Name="boarding_location" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="drop_location" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="boardDate" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="dropDate" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="boardingtime" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="droptime" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="days_of_running" Nullable="false" />
+    <Property Type="Int32" Name="train_numberID" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tbl_train">
+    <Key>
+      <PropertyRef Name="train_number" />
+    </Key>
+    <Property Name="train_number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="train_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="train_status" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ticket_price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="total_seats" Type="Int32" Nullable="false" />
+    <Property Name="seats_available" Type="Int32" Nullable="false" />
+    <Property Name="boarding_location" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="drop_location" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="boarding_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="drop_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="boarding_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="drop_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="days_of_running" Type="Int32" Nullable="false" />
+    <Property Name="train_numberID" Type="Int32" />
+    <NavigationProperty Name="users" Relationship="OTRSModel.FK__users__train_num__151B244E" FromRole="tbl_train" ToRole="user" />
+  </EntityType>
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="booking_id" />
+    </Key>
+    <Property Name="booking_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="train_number" Type="Int32" Nullable="false" />
+    <Property Name="number_of_seats" Type="Int32" Nullable="false" />
+    <Property Name="user_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_phone_number" Type="Int64" Nullable="false" />
+    <Property Name="user_email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="total_price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="users" Relationship="OTRSModel.FK__users__booking_i__18EBB532" FromRole="booking" ToRole="user" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_email" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_confirm_password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_dob" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="user_location" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="user_status" Type="Boolean" />
+    <Property Name="train_number" Type="Int32" />
+    <Property Name="booking_id" Type="Int32" />
+    <NavigationProperty Name="booking" Relationship="OTRSModel.FK__users__booking_i__18EBB532" FromRole="user" ToRole="booking" />
+    <NavigationProperty Name="tbl_train" Relationship="OTRSModel.FK__users__train_num__151B244E" FromRole="user" ToRole="tbl_train" />
+  </EntityType>
+  <Association Name="FK__users__booking_i__18EBB532">
+    <End Type="OTRSModel.booking" Role="booking" Multiplicity="0..1" />
+    <End Type="OTRSModel.user" Role="user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="booking">
+        <PropertyRef Name="booking_id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__train_num__151B244E">
+    <End Type="OTRSModel.tbl_train" Role="tbl_train" Multiplicity="0..1" />
+    <End Type="OTRSModel.user" Role="user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_train">
+        <PropertyRef Name="train_number" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="train_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_View_Ticket_Result">
+    <Property Type="String" Name="user_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="user_email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="train_name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="booking_id" Nullable="true" />
+    <Property Type="Int32" Name="number_of_seats" Nullable="true" />
+    <Property Type="String" Name="boardDate" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="drop_location" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="dropDate" Nullable="true" MaxLength="30" />
+  </ComplexType>
+</Schema>

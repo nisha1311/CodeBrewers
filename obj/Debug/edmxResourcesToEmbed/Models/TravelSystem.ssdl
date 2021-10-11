@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OTRSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="booking">
+    <Key>
+      <PropertyRef Name="booking_id" />
+    </Key>
+    <Property Name="booking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="train_number" Type="int" Nullable="false" />
+    <Property Name="number_of_seats" Type="int" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_phone_number" Type="bigint" Nullable="false" />
+    <Property Name="user_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="total_price" Type="money" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OTRS.dbo.login_' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="login_">
+    <Key>
+      <PropertyRef Name="email" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_train">
+    <Key>
+      <PropertyRef Name="train_number" />
+    </Key>
+    <Property Name="train_number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="train_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="train_status" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="ticket_price" Type="money" Nullable="false" />
+    <Property Name="total_seats" Type="int" Nullable="false" />
+    <Property Name="seats_available" Type="int" Nullable="false" />
+    <Property Name="boarding_location" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="drop_location" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="boarding_date" Type="date" Nullable="false" />
+    <Property Name="drop_date" Type="date" Nullable="false" />
+    <Property Name="boarding_time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="drop_time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="days_of_running" Type="int" Nullable="false" />
+    <Property Name="train_numberID" Type="int" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="user_email" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_confirm_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_dob" Type="date" Nullable="false" />
+    <Property Name="user_location" Type="nchar" MaxLength="10" />
+    <Property Name="user_status" Type="bit" />
+    <Property Name="train_number" Type="int" />
+    <Property Name="booking_id" Type="int" />
+  </EntityType>
+  <Association Name="FK__users__booking_i__18EBB532">
+    <End Role="booking" Type="Self.booking" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="booking">
+        <PropertyRef Name="booking_id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__train_num__151B244E">
+    <End Role="tbl_train" Type="Self.tbl_train" Multiplicity="0..1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_train">
+        <PropertyRef Name="train_number" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="train_number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="addbooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="train_number" Type="nvarchar" Mode="In" />
+    <Parameter Name="number_of_seats" Type="int" Mode="In" />
+    <Parameter Name="user_name" Type="varchar" Mode="In" />
+    <Parameter Name="user_phone_number" Type="bigint" Mode="In" />
+    <Parameter Name="user_email" Type="nvarchar" Mode="In" />
+    <Parameter Name="total_price" Type="money" Mode="In" />
+  </Function>
+  <Function Name="AddTrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="addtrains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="train_number" Type="nvarchar" Mode="In" />
+    <Parameter Name="train_name" Type="varchar" Mode="In" />
+    <Parameter Name="train_status" Type="nchar" Mode="In" />
+    <Parameter Name="ticket_price" Type="money" Mode="In" />
+    <Parameter Name="total_seats" Type="int" Mode="In" />
+    <Parameter Name="seats_available" Type="int" Mode="In" />
+    <Parameter Name="boarding_location" Type="nchar" Mode="In" />
+    <Parameter Name="drop_location" Type="nchar" Mode="In" />
+    <Parameter Name="boarding_date" Type="date" Mode="In" />
+    <Parameter Name="drop_date" Type="date" Mode="In" />
+    <Parameter Name="boarding_time" Type="time" Mode="In" />
+    <Parameter Name="drop_time" Type="time" Mode="In" />
+    <Parameter Name="days_of_running" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AddUserDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="addusers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_name" Type="varchar" Mode="In" />
+    <Parameter Name="user_email" Type="nvarchar" Mode="In" />
+    <Parameter Name="user_password" Type="varchar" Mode="In" />
+    <Parameter Name="user_confirm_password" Type="nvarchar" Mode="In" />
+    <Parameter Name="user_dob" Type="date" Mode="In" />
+    <Parameter Name="user_location" Type="nchar" Mode="In" />
+    <Parameter Name="user_status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="authenticateusers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_email" Type="nvarchar" Mode="In" />
+    <Parameter Name="user_password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="deletebooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="deletetrains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="train_number" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="deleteusers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetTrain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="train_number" Type="int" Mode="In" />
+  </Function>
+  <Function Name="searchtrains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="boarding_location" Type="nchar" Mode="In" />
+    <Parameter Name="drop_location" Type="nchar" Mode="In" />
+    <Parameter Name="boarding_date" Type="date" Mode="In" />
+  </Function>
+  <Function Name="sp_View_Ticket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="train_number" Type="int" Mode="In" />
+  </Function>
+  <Function Name="updatetrain_status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="train_number" Type="nvarchar" Mode="In" />
+    <Parameter Name="train_status" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="updateusers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_name" Type="varchar" Mode="In" />
+    <Parameter Name="user_email" Type="nvarchar" Mode="In" />
+    <Parameter Name="user_password" Type="varchar" Mode="In" />
+    <Parameter Name="user_confirm_password" Type="nvarchar" Mode="In" />
+    <Parameter Name="user_dob" Type="date" Mode="In" />
+    <Parameter Name="user_location" Type="nchar" Mode="In" />
+    <Parameter Name="user_status" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="viewbooking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="viewusers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="OTRSModelStoreContainer">
+    <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_train" EntityType="Self.tbl_train" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="login_" EntityType="Self.login_" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [login_].[email] AS [email], 
+    [login_].[password] AS [password], 
+    [login_].[IsAdmin] AS [IsAdmin]
+    FROM [dbo].[login_] AS [login_]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__users__booking_i__18EBB532" Association="Self.FK__users__booking_i__18EBB532">
+      <End Role="booking" EntitySet="booking" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__train_num__151B244E" Association="Self.FK__users__train_num__151B244E">
+      <End Role="tbl_train" EntitySet="tbl_train" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

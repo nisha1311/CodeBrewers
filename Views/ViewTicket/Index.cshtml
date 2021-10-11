@@ -1,0 +1,164 @@
+﻿
+
+@model Travel_Reservation_System.ViewModel.ViewTicketViewModel
+   
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Invoice Print</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+
+    <link href="~/AdminLTE/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+
+
+   
+    <script>
+        document.getElementById("date").innerHTML = Date();
+    </script>
+
+
+    <link href="~/AdminLTE/dist/css/adminlte.min.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="invoice">
+            <!-- title row -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="page-header">
+                        <i class="fas fa-globe"></i> OTRS, Inc.
+                        <small class="float-right" id="date"> </small>
+                    </h2>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                    Company Name:
+                    <address>
+                        <strong>OTRS, INc.</strong><br>
+                        #10, Bangalore, IN<br>
+                        Phone:  080-1233-5432<br>
+                        Email: info@otrs.com
+                    </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    Name:@Model.user_name<br>
+                    Email:@Model.user_email
+                    <address>
+                        @*795 Folsom Ave, Suite 600<br>
+            San Francisco, CA 94107<br>
+            Phone: (555) 539-1037<br>*@
+                    </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    <label> <b>Ticket ID :@Model.booKingID</b></label><br>
+                    <label><b>Boarding Date: @Model.boarding_date</b></label><br>
+                    <label><b>Boarding Location:@Model.drop_location</b></label><br>
+                    <label><b>Destination:@Model.drop_location</b></label><br>
+                    <label><b>Drop Date:@Model.drop_date</b></label><br>
+                    <br>
+                    
+                    <label><b>Train Name:</b> </label><br>
+                    
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Passenger Name</th>
+                                <th>Passenger Email</th>
+                                <th>Number of Seats #</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.user_name</td>:
+                                <td>@Model.user_email</td>
+                                <td>@Model.NoofSeat</td>
+                                <td>250.00</td>
+                            </tr>
+                           
+                         
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <!-- accepted payments column -->
+                <div class="col-6">
+                    <p class="lead">Payment Methods:</p>
+
+                    <img src="~/AdminLTE/dist/img/credit/visa.png" alt="Visa" />
+
+                    <img src="~/AdminLTE/dist/img/credit/mastercard.png" alt="Mastercard" />
+
+                    <img src="~/AdminLTE/dist/img/credit/american-express.png" alt="American Express" />
+
+
+                    <img src="~/AdminLTE/dist/img/credit/paypal2.png"  alt="Paypal"  />
+
+                    <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                        Terms and Conditions apply.
+                    </p>
+                </div>
+                <!-- /.col -->
+                <div class="col-6">
+                    <p class="lead">Amount Due @*2/22/2014*@</p>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th style="width:50%">Subtotal:</th>
+                                @*<td>250.00</td>*@
+                            </tr>
+                            <tr>
+                                <th>Tax (12%)</th>
+                                @*<td>15.24</td>*@
+                            </tr>
+                           
+                            <tr>
+                                <th>Total:</th>
+                                @*<td>275.24</td>*@
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- Page specific script -->
+  <div class="wrapper"><button type="submit"> @Html.ActionLink("Print Ticket", "DownloadTicket", "ViewTicket")</button></div>
+</body>
+</html>
+

@@ -1,0 +1,434 @@
+﻿@model IEnumerable<Travel_Reservation_System.Models.searchtrains_Result>
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Title = "results";
+}
+
+
+
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Holiday - templatemo</title>
+    <!--
+    Holiday Template
+    http://www.templatemo.com/tm-475-holiday
+    -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css' />
+
+    <link href="~/UserTemplate/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/UserTemplate/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/UserTemplate/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/UserTemplate/css/flexslider.css" rel="stylesheet" />
+    <link href="~/UserTemplate/css/templatemo-style.css" rel="stylesheet" />
+
+    <link href="~/UserTemplate/SearchBox/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/UserTemplate/SearchBox/css/style.css" rel="stylesheet" />
+
+    <link href="~/CSS/fullscreen.css" rel="stylesheet" />
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/UserTemplate/Table/css/style.css">
+
+</head>
+
+<body class="tm-gray-bg">
+    <!-- Header -->
+    <div class="fullscreen">
+        <div class="tm-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
+                        <a href="#" class="tm-site-name">Holiday</a>
+                    </div>
+                    <div class="col-lg-6 col-md-8 col-sm-9">
+                        <div class="mobile-menu-icon">
+                            <i class="fa fa-bars"></i>
+                        </div>
+                        <nav class="tm-nav">
+                            <ul>
+                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="ftco-section">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="text-center mb-4">Available Trains</h3>
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead class="thead-primary">
+                                    <tr>
+                                        <th>#</th>
+                                        <th> Train Name </th>
+                                        <th> Train Status </th>
+                                        <th> Ticket Price </th>
+                                        <th> Total Seats </th>
+                                        <th> Seats Left </th>
+                                        <th> Boarding Date </th>
+                                        <th> Boarding Time </th>
+                                        <th> Drop Date </th>
+                                        <th> Drop Time </th>
+                                        <th> Days Running</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row" class="scope"></th>
+                                            <td>@item.train_number</td>
+                                            <td>@item.train_name</td>
+                                            <td>@item.train_status</td>
+                                            <td>@item.ticket_price</td>
+                                            <td>@item.total_seats</td>
+                                            <td>@item.seats_available</td>
+                                            <td>@item.boarding_date</td>
+                                            <td>@item.boarding_time</td>
+                                            <td>@item.drop_date</td>
+                                            <td>@item.drop_time</td>
+                                            <td>@item.days_of_running</td>
+                                            <td><a href="#" class="btn btn-primary">Book</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <script src="~/UserTemplate/Table/js/jquery.min.js"></script>
+        <script src="~/UserTemplate/Table/js/popper.js"></script>
+        <script src="~/UserTemplate/Table/js/bootstrap.min.js"></script>
+        <script src="~/UserTemplate/Table/js/main.js"></script>
+
+
+
+
+
+
+        @*<script src="~/UserTemplate/SearchBox/js/jquery.min.js"></script>
+        <script>
+            $('.form-control').each(function () {
+                floatedLabel($(this));
+            });
+
+            $('.form-control').on('input', function () {
+                floatedLabel($(this));
+            });
+
+            function floatedLabel(input) {
+                var $field = input.closest('.form-group');
+                if (input.val()) {
+                    $field.addClass('input-not-empty');
+                } else {
+                    $field.removeClass('input-not-empty');
+                }
+            }
+        </script>*@
+
+    </div>
+</body>
+</html>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> OTRS </title>
+
+    <!-- Google Font: Source Sans Pro -->
+<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">-->
+<!-- Font Awesome -->-->
+<!--@*<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">*@
+
+<!--<link rel="stylesheet" href="~/AdminLTE/plugins/fontawesome-free/css/all.min.css" />-->
+<!-- DataTables -->-->
+<!--@*<link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">*@
+
+<!--<link rel="stylesheet" href="~/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" />-->
+@*<link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">*@
+<!--<link rel="stylesheet" href="~/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" />-->
+@*<link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">*@
+
+<!--<link rel="stylesheet" href="~/AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" />-->
+<!-- Theme style -->-->
+<!--@*<link rel="stylesheet" href="../../dist/css/adminlte.min.css">*@
+    <!--<link rel="stylesheet" href="~/AdminLTE/dist/css/adminlte.min.css" />
+
+    <link rel="stylesheet" href="~/CSS/fullscreen.css" />
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="fullscreen">
+    <div class="wrapper">-->
+<!-- /.navbar -->
+<!-- Main Sidebar Container -->
+<!--<aside class="main-sidebar sidebar-dark-primary elevation-4">-->
+<!-- Brand Logo -->
+<!-- Sidebar -->
+<!--<div class="sidebar">-->
+<!-- Sidebar user (optional) -->
+<!--<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+    <div class="info">
+        <a href="#" class="d-block"> Hello! </a>
+    </div>
+</div>-->
+<!-- Sidebar Menu -->
+<!--<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">-->
+<!-- Add icons to the links using the .nav-icon class
+with font-awesome or any other icon font library -->
+<!--<li>
+    @Html.ActionLink("Search Trains", "Index1", "SearchTrain")
+</li>-->
+@*<li>
+        @Html.ActionLink("View", "Index", "TrainSchedule")
+    </li>*@
+
+
+                    </ul>
+                </nav>-->
+<!-- /.sidebar-menu -->
+<!--</div>-->
+<!-- /.sidebar -->
+<!--</aside>-->
+<!-- Content Wrapper. Contains page content -->
+<!--<div class="content-wrapper">-->
+<!-- Content Header (Page header) -->
+<!--<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1></h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    </div>-->
+<!-- /.container-fluid -->
+<!--</section>-->
+<!-- Main content -->
+<!--<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"> Trains available </h3>
+                    </div>-->
+<!-- /.card-header -->
+<!--<div class="card-body">
+
+                                <table id="getData" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th> Train Name </th>
+                                            <th> Train Status </th>
+                                            <th> Ticket Price </th>
+                                            <th> Total Seats </th>
+                                            <th> Seats Left </th>
+                                            <th> Boarding Date </th>
+                                            <th> Boarding Time </th>
+                                            <th> Drop Date </th>
+                                            <th> Drop Time </th>
+                                            <th> Days Running</th>
+                                            <th> @Html.ActionLink(" Book Now ", "Index", "Booking") </th>
+                                        </tr>
+                                    </thead>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tbody>
+                                            <tr>
+                                                <td>@item.train_number</td>
+                                                <td>@item.train_name</td>
+                                                <td>@item.train_status</td>
+                                                <td>@item.ticket_price</td>
+                                                <td>@item.total_seats</td>
+                                                <td>@item.seats_available</td>
+                                                <td>@item.boarding_date</td>
+                                                <td>@item.boarding_time</td>
+                                                <td>@item.drop_date</td>
+                                                <td>@item.drop_time</td>
+                                                <td>@item.days_of_running</td>
+                                                <td>@Html.ActionLink("Book", "Index", "Booking")</td>
+                                            </tr>
+                                        </tbody>
+                                    }
+                                </table>
+
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+</div>-->
+<!-- /.content-wrapper -->
+<!-- Control Sidebar -->
+<!--<aside class="control-sidebar control-sidebar-dark">-->
+<!-- Control sidebar content goes here -->
+<!--</aside>-->
+<!-- /.control-sidebar -->
+<!--</div>-->
+<!-- ./wrapper -->
+<!-- jQuery -->
+<!--<script src="~/AdminLTE/plugins/jquery/jquery.min.js"></script>-->
+<!-- Bootstrap 4 -->
+<!--<script src="~/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!-- DataTables  & Plugins -->
+<!--<script src="~/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="~/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+
+<script src="~/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<script src="~/AdminLTE/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+
+
+<script src="~/AdminLTE/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+
+<script src="~/AdminLTE/plugins/jszip/jszip.min.js"></script>
+
+<script src="~/AdminLTE/plugins/pdfmake/pdfmake.min.js"></script>
+
+<script src="~/AdminLTE/plugins/pdfmake/vfs_fonts.js"></script>
+
+<script src="~/AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+
+<script src="~/AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+
+<script src="~/AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>-->
+<!-- AdminLTE App -->
+<!--<script src="../../dist/js/adminlte.min.js"></script>-->
+<!-- AdminLTE for demo purposes -->
+<!--<script src="../../dist/js/demo.js"></script>-->
+<!-- Page specific script -->
+<!--<script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        })
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+                            });
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="Scripts/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/User/"></script>
+
+    <script src="~/Scripts/User/datepicker.js"></script>
+    <script src="~/Scripts/User/plugins.js"></script>
+    <script src="~/Scripts/User/main.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+
+            // navigation click actions
+            $('.scroll-link').on('click', function (event) {
+                event.preventDefault();
+                var sectionID = $(this).attr("data-id");
+                scrollToID('#' + sectionID, 750);
+            });
+            // scroll to top action
+            $('.scroll-top').on('click', function (event) {
+                event.preventDefault();
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+            });
+            // mobile nav toggle
+            $('#nav-toggle').on('click', function (event) {
+                event.preventDefault();
+                $('#main-nav').toggleClass("open");
+            });
+        });
+        // scroll function
+        function scrollToID(id, speed) {
+            var offSet = 0;
+            var targetOffset = $(id).offset().top - offSet;
+            var mainNav = $('#main-nav');
+            $('html,body').animate({ scrollTop: targetOffset }, speed);
+            if (mainNav.hasClass("open")) {
+                mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+                mainNav.removeClass("open");
+            }
+        }
+        if (typeof console === "undefined") {
+            console = {
+                log: function () { }
+            };
+        }
+    </script>
+        </div>
+</body>
+</html>-->

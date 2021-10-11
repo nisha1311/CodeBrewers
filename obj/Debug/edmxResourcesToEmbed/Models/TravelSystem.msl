@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OTRSModelStoreContainer" CdmEntityContainer="OTRSEntities">
+    <EntitySetMapping Name="login_">
+      <EntityTypeMapping TypeName="OTRSModel.login_">
+        <MappingFragment StoreEntitySet="login_">
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="addbooking" FunctionName="OTRSModel.Store.addbooking" />
+    <FunctionImportMapping FunctionImportName="addusers" FunctionName="OTRSModel.Store.addusers" />
+    <FunctionImportMapping FunctionImportName="deletebooking" FunctionName="OTRSModel.Store.deletebooking" />
+    <FunctionImportMapping FunctionImportName="deletetrains" FunctionName="OTRSModel.Store.deletetrains" />
+    <FunctionImportMapping FunctionImportName="deleteusers" FunctionName="OTRSModel.Store.deleteusers" />
+    <FunctionImportMapping FunctionImportName="updatetrain_status" FunctionName="OTRSModel.Store.updatetrain_status" />
+    <FunctionImportMapping FunctionImportName="updateusers" FunctionName="OTRSModel.Store.updateusers" />
+    <FunctionImportMapping FunctionImportName="viewbooking" FunctionName="OTRSModel.Store.viewbooking">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OTRSModel.viewbooking_Result">
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="train_number" ColumnName="train_number" />
+          <ScalarProperty Name="number_of_seats" ColumnName="number_of_seats" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_phone_number" ColumnName="user_phone_number" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="viewusers" FunctionName="OTRSModel.Store.viewusers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OTRSModel.viewusers_Result">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_confirm_password" ColumnName="user_confirm_password" />
+          <ScalarProperty Name="user_dob" ColumnName="user_dob" />
+          <ScalarProperty Name="user_location" ColumnName="user_location" />
+          <ScalarProperty Name="user_status" ColumnName="user_status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddUser" FunctionName="OTRSModel.Store.AddUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OTRSModel.AddUser_Result">
+          <ScalarProperty Name="train_number" ColumnName="train_number" />
+          <ScalarProperty Name="train_name" ColumnName="train_name" />
+          <ScalarProperty Name="train_status" ColumnName="train_status" />
+          <ScalarProperty Name="ticket_price" ColumnName="ticket_price" />
+          <ScalarProperty Name="total_seats" ColumnName="total_seats" />
+          <ScalarProperty Name="seats_available" ColumnName="seats_available" />
+          <ScalarProperty Name="boarding_location" ColumnName="boarding_location" />
+          <ScalarProperty Name="drop_location" ColumnName="drop_location" />
+          <ScalarProperty Name="boarding_date" ColumnName="boarding_date" />
+          <ScalarProperty Name="drop_date" ColumnName="drop_date" />
+          <ScalarProperty Name="boarding_time" ColumnName="boarding_time" />
+          <ScalarProperty Name="drop_time" ColumnName="drop_time" />
+          <ScalarProperty Name="days_of_running" ColumnName="days_of_running" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddUserDetail" FunctionName="OTRSModel.Store.AddUserDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OTRSModel.AddUserDetail_Result">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_confirm_password" ColumnName="user_confirm_password" />
+          <ScalarProperty Name="user_dob" ColumnName="user_dob" />
+          <ScalarProperty Name="user_location" ColumnName="user_location" />
+          <ScalarProperty Name="user_status" ColumnName="user_status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="authenticateusers" FunctionName="OTRSModel.Store.authenticateusers" />
+    <FunctionImportMapping FunctionImportName="AddTrain" FunctionName="OTRSModel.Store.AddTrain">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OTRSModel.AddTrain_Result">
+          <ScalarProperty Name="train_number" ColumnName="train_number" />
+          <ScalarProperty Name="train_name" ColumnName="train_name" />
+          <ScalarProperty Name="train_status" ColumnName="train_status" />
+          <ScalarProperty Name="ticket_price" ColumnName="ticket_price" />
+          <ScalarProperty Name="total_seats" ColumnName="total_seats" />
+          <ScalarProperty Name="seats_available" ColumnName="seats_available" />
+          <ScalarProperty Name="boarding_location" ColumnName="boarding_location" />
+          <ScalarProperty Name="drop_location" ColumnName="drop_location" />
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+          <ScalarProperty Name="boarding_time" ColumnName="boarding_time" />
+          <ScalarProperty Name="drop_time" ColumnName="drop_time" />
+          <ScalarProperty Name="days_of_running" ColumnName="days_of_running" />
+          <ScalarProperty Name="train_numberID" ColumnName="train_numberID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="addtrains" FunctionName="OTRSModel.Store.addtrains" />
+    <FunctionImportMapping FunctionImportName="searchtrains" FunctionName="OTRSModel.Store.searchtrains">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OTRSModel.searchtrains_Result">
+          <ScalarProperty Name="train_number" ColumnName="train_number" />
+          <ScalarProperty Name="train_name" ColumnName="train_name" />
+          <ScalarProperty Name="train_status" ColumnName="train_status" />
+          <ScalarProperty Name="ticket_price" ColumnName="ticket_price" />
+          <ScalarProperty Name="total_seats" ColumnName="total_seats" />
+          <ScalarProperty Name="seats_available" ColumnName="seats_available" />
+          <ScalarProperty Name="boarding_location" ColumnName="boarding_location" />
+          <ScalarProperty Name="drop_location" ColumnName="drop_location" />
+          <ScalarProperty Name="boarding_date" ColumnName="boarding_date" />
+          <ScalarProperty Name="drop_date" ColumnName="drop_date" />
+          <ScalarProperty Name="boarding_time" ColumnName="boarding_time" />
+          <ScalarProperty Name="drop_time" ColumnName="drop_time" />
+          <ScalarProperty Name="days_of_running" ColumnName="days_of_running" />
+          <ScalarProperty Name="train_numberID" ColumnName="train_numberID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTrain" FunctionName="OTRSModel.Store.GetTrain">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OTRSModel.GetTrain_Result">
+          <ScalarProperty Name="train_number" ColumnName="train_number" />
+          <ScalarProperty Name="train_name" ColumnName="train_name" />
+          <ScalarProperty Name="train_status" ColumnName="train_status" />
+          <ScalarProperty Name="ticket_price" ColumnName="ticket_price" />
+          <ScalarProperty Name="total_seats" ColumnName="total_seats" />
+          <ScalarProperty Name="seats_available" ColumnName="seats_available" />
+          <ScalarProperty Name="boarding_location" ColumnName="boarding_location" />
+          <ScalarProperty Name="drop_location" ColumnName="drop_location" />
+          <ScalarProperty Name="boardDate" ColumnName="boardDate" />
+          <ScalarProperty Name="dropDate" ColumnName="dropDate" />
+          <ScalarProperty Name="boardingtime" ColumnName="boardingtime" />
+          <ScalarProperty Name="droptime" ColumnName="droptime" />
+          <ScalarProperty Name="days_of_running" ColumnName="days_of_running" />
+          <ScalarProperty Name="train_numberID" ColumnName="train_numberID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_train">
+      <EntityTypeMapping TypeName="OTRSModel.tbl_train">
+        <MappingFragment StoreEntitySet="tbl_train">
+          <ScalarProperty Name="train_numberID" ColumnName="train_numberID" />
+          <ScalarProperty Name="days_of_running" ColumnName="days_of_running" />
+          <ScalarProperty Name="drop_time" ColumnName="drop_time" />
+          <ScalarProperty Name="boarding_time" ColumnName="boarding_time" />
+          <ScalarProperty Name="drop_date" ColumnName="drop_date" />
+          <ScalarProperty Name="boarding_date" ColumnName="boarding_date" />
+          <ScalarProperty Name="drop_location" ColumnName="drop_location" />
+          <ScalarProperty Name="boarding_location" ColumnName="boarding_location" />
+          <ScalarProperty Name="seats_available" ColumnName="seats_available" />
+          <ScalarProperty Name="total_seats" ColumnName="total_seats" />
+          <ScalarProperty Name="ticket_price" ColumnName="ticket_price" />
+          <ScalarProperty Name="train_status" ColumnName="train_status" />
+          <ScalarProperty Name="train_name" ColumnName="train_name" />
+          <ScalarProperty Name="train_number" ColumnName="train_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bookings">
+      <EntityTypeMapping TypeName="OTRSModel.booking">
+        <MappingFragment StoreEntitySet="booking">
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_phone_number" ColumnName="user_phone_number" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="number_of_seats" ColumnName="number_of_seats" />
+          <ScalarProperty Name="train_number" ColumnName="train_number" />
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="OTRSModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="train_number" ColumnName="train_number" />
+          <ScalarProperty Name="user_status" ColumnName="user_status" />
+          <ScalarProperty Name="user_location" ColumnName="user_location" />
+          <ScalarProperty Name="user_dob" ColumnName="user_dob" />
+          <ScalarProperty Name="user_confirm_password" ColumnName="user_confirm_password" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_View_Ticket" FunctionName="OTRSModel.Store.sp_View_Ticket">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OTRSModel.sp_View_Ticket_Result">
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="train_name" ColumnName="train_name" />
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="number_of_seats" ColumnName="number_of_seats" />
+          <ScalarProperty Name="boardDate" ColumnName="boardDate" />
+          <ScalarProperty Name="drop_location" ColumnName="drop_location" />
+          <ScalarProperty Name="dropDate" ColumnName="dropDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

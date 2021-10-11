@@ -1,0 +1,283 @@
+﻿<script src="~/Scripts/ScheduleTrain/AddTrain.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link href="~/CSS/ToggleButton.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "TrainSchedule";
+}
+
+
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Train Schedule</a></li>
+
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- /.col -->
+            <div class="col-md-12">
+                <div class="nav-tabs-custom">
+                    <div class="tabParent">
+                        <ul class="nav nav-tabs">
+                            <li id="btnViewTrain" class="active"><a href="~/TrainSchedule/Index">View Train</a></li>
+                            @*<li id="testId"><a>Add Train</a></li>*@
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="box-header" style="display:grid;">
+    <div class="callout callout-info">
+        <div class="form-group ">
+            <label for="inputName" class="control-label col-sm-2">Train List</label>
+            <div class="col-sm-6">
+                
+            
+                <button id="addTrainBtn" type="button" class="btn btn-primary">Add Train</button>
+            
+        </div>
+    </div>
+</div>
+<div class="box-body clsScroll">
+    <div class="scrollit">
+        <table id="getData" class="table table-bordered table-striped tableBody">
+            <thead>
+                <tr>
+                    <th>
+                        Train Number
+
+                    </th>
+                    <th>
+                        Train Name
+
+                    </th>
+                    <th>
+                        Train Status
+                    </th>
+                    <th>
+                        Ticket Prize
+                    </th>
+                    <th>
+                        Total Seat
+                    </th>
+                    <th>
+                        Seats Available
+
+                    </th>
+                    <th>
+                        Boarding Location
+
+                    </th>
+                    <th>
+                        Drop Location
+
+                    </th>
+                    <th>
+                        Boarding Date
+
+                    </th>
+                    <th>
+                        Drop Date
+
+                    </th>
+                    <th>
+                        Boarding Time
+
+                    </th>
+                    <th>
+                        Drop Time
+
+                    </th>
+                    <th>
+                        Days of Running
+
+                    </th>
+                    <th>
+                        Edit
+
+                    </th>
+                    <th>
+                        Delete
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="modaladdTrain">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modlheadcolr">
+                <button type="button" class="close" data-dismiss="modal" arial-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title" id="updatePOText">Add Train</h3>
+            </div>
+            <div class="modal-body">
+                <div class="register-box-body">
+                    @*<form id="myForm" method="post" enctype="multipart/form-data">*@
+                    @using (Html.BeginForm("AddTrain", "TrainSchedule", FormMethod.Post))
+                    {
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Train Number</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="hidden" name="train_number" class="form-control" id="train_number_id" placeholder="Train Number">
+
+                        </div>
+                        @*<div class="form-group">
+                                <label for="PO">Upload Packing Slip:</label>
+                                <input type="file" class="form-control clearText" id="PackingSlipfile" name="PackingSlipfile" accept="application/pdf,application/vnd.ms-excel">
+                                <span style="color:red" class="clrMSg" hidden id="PackingSlipSpan">This field is required.</span>
+                            </div>*@
+                        @*<div class="form-group">
+                                <a href="#" id="getPackingSlipID"><img src="~/image/txt-file-forPO.png" style="height:60px;width:60px" class="img-circle" alt="User Image" /></a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="AddPackingSlip">Add Packing Slip</button>
+                            </div>*@
+                        <div class="form-group" style="display: flex; justify-content: center;">
+                            <label for="exampleInputPassword1">Train Name</label>&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="train_name" class="form-control" id="train_name_id" placeholder="Train name">
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Train Status</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="text" name="train_status" class="form-control" id="train_status_id" placeholder="Train Status">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Ticket Prize</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="text" name="ticket_price" class="form-control" id="ticket_price_id" placeholder="Ticket Prize">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Total Seat</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="text" name="total_seats" class="form-control" id="total_seats_id" placeholder="Total Seat">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Seats Available</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="text" name="seats_available" class="form-control" id="seats_available_id" placeholder="Seats Available">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Boarding Location</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="text" name="boarding_location" class="form-control" id="boarding_location_id" placeholder="Boarding Location">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Drop Location</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="text" name="drop_location" class="form-control" id="drop_location_id" placeholder="Drop Location">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Boarding Date</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="date" name="boarding_date" class="form-control" id="boarding_date_id" placeholder="Boarding Date">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Drop Date</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="date" name="drop_date" class="form-control" id="drop_date_id" placeholder="Drop Date">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Boarding Time</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="time" name="boarding_time" class="form-control" id="boarding_time_id" placeholder="Boarding Time">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Drop Time</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="time" name="drop_time" class="form-control" id="drop_time_id" placeholder="Drop Time">
+
+                        </div>
+                        <div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Days of Running</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="text" name="days_of_running" class="form-control" id="days_of_running_id" placeholder="Days of Running">
+
+                        </div>
+
+                        @*<div class="form-group" style="display: flex; justify-content: center;">
+
+                            <label for="exampleInputEmail1">Seat Left</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <input type="text" name="text" class="form-control" id="exampleInputEmail1" placeholder="Seat Left">
+
+                                        </div>*@
+
+
+                        <!-- /.card-body -->
+                        <div>
+                            <div>
+                                <center><button type="button" id="addTrainBtnPOpUP" class="btn btn-primary">Add</button></center>
+                               
+                                <center><button type="button" id="UpdateTrainBtnPopUP"class="btn btn-primary">Update</button></center>
+                            </div>
+
+                        </div>
+
+
+                        <!-- /.form-box -->
+
+                        <!-- /.register-box -->
+
+
+
+
+                        <!-- /.modal-content -->
+
+
+
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
